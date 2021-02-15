@@ -8,14 +8,14 @@ import java.util.stream.Collectors;
 
 public class CharacterDatabase implements Character {
     private List<Person> characterDB = Arrays.asList(
-            new Person("Mahatma Gandi", false, HairLength.BOLD, true, false, false),
+            new Person("Mahatma Gandi", false, HairLength.BALD, true, false, false),
             new Person("Muhammad Ali", true, HairLength.SHORT, false, false, false),
             new Person("Marilyn Monroe", true, HairLength.MEDIUM, false, false, false),
             new Person("Abraham Lincoln", true, HairLength.SHORT, false, true, true),
             new Person("Mother Teresa", true, HairLength.LONG, false, true, false),
-            new Person("Charles Darwin", false, HairLength.BOLD, false, false, true),
+            new Person("Charles Darwin", false, HairLength.BALD, false, false, true),
             new Person("Queen Victoria", true, HairLength.LONG, false, true, false),
-            new Person("Leonardo da Vinci", false, HairLength.BOLD, false, false, true),
+            new Person("Leonardo da Vinci", false, HairLength.BALD, false, false, true),
             new Person("Franklin Roosevelt", true, HairLength.SHORT, true, false, false),
             new Person("JK Rowling", true, HairLength.LONG, false, false, false)
     );
