@@ -13,9 +13,11 @@ public class Game {
         Scanner input = new Scanner(System.in);
 
         System.out.println("\nWelcome to the guess game: Who Am I?" +
-                "\nRules: players keep guessing until one of them find the " +
-                "\nperson by feature or try guessing the name directly!" +
+                "\nRules: Each player take guesses until one of them reveals " +
+                "\n the mystery person by feature or try guessing their name directly!" +
                 "\nGood luck!");
+
+        System.out.println("\n" +"Starting the game now!!\n Have a blast!");
 
         System.out.println("\n***************\n" + listNames(character) + "\n***************\n");
 
@@ -23,6 +25,9 @@ public class Game {
             System.out.println("Enter *1* to guess by Name or *2* to guess by Features!");
 
             int nameOrFeature = input.nextInt();
+            if (nameOrFeature == 1) {
+                System.out.println(" All the names would go here");
+            }
             if (nameOrFeature == 2) {
                 System.out.println("Select one of the features by entering: " +
                         "\n 1 - Hair, 2 - HairLength, 3 - Glasses, 4 - Cover, 5 - Beard \n");

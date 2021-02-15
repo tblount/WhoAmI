@@ -18,4 +18,5 @@ public interface Character {
     int size();
 
     Collection<Person> getAll();
+
 }
