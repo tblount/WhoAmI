@@ -17,7 +17,15 @@ public class CharacterDatabase implements Character {
             new Person("Queen Victoria", true, HairLength.LONG, false, true, false),
             new Person("Leonardo da Vinci", false, HairLength.BOLD, false, false, true),
             new Person("Franklin Roosevelt", true, HairLength.SHORT, true, false, false),
-            new Person("JK Rowling", true, HairLength.LONG, false, false, false)
+            new Person("JK Rowling", true, HairLength.LONG, false, false, false),
+            new Person("Winston Churchill", true, HairLength.SHORT, false, true, false),
+            new Person("Albert Einstein", true, HairLength.SHORT, false, false, true),
+            new Person("Rosa Parks", true, HairLength.LONG, true, false, false),
+            new Person("Amelia Earhart", true, HairLength.MEDIUM, false, false, false),
+            new Person("Steve Jobs", false, HairLength.BOLD, true, false, true),
+            new Person("Karl Marx", true, HairLength.MEDIUM, false, false, true),
+            new Person("Santa Claus", true, HairLength.MEDIUM, true, true, true),
+            new Person("William Shakespeare", true, HairLength.MEDIUM, false, false, true)
     );
 
     Collection<Person> people;
