@@ -22,7 +22,7 @@ public class CharacterDatabase implements Character {
             new Person("Albert Einstein", true, HairLength.SHORT, false, false, true),
             new Person("Rosa Parks", true, HairLength.LONG, true, false, false),
             new Person("Amelia Earhart", true, HairLength.MEDIUM, false, false, false),
-            new Person("Steve Jobs", false, HairLength.BOLD, true, false, true),
+            new Person("Steve Jobs", false, HairLength.BALD, true, false, true),
             new Person("Karl Marx", true, HairLength.MEDIUM, false, false, true),
             new Person("Santa Claus", true, HairLength.MEDIUM, true, true, true),
             new Person("William Shakespeare", true, HairLength.MEDIUM, false, false, true)
