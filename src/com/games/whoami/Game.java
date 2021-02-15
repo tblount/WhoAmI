@@ -26,7 +26,7 @@ public class Game {
 
             int nameOrFeature = input.nextInt();
             if (nameOrFeature == 1) {
-                System.out.println(" All the names would go here");
+                System.out.println("Make a choice from the list - " + listNames(character));
             }
             if (nameOrFeature == 2) {
                 System.out.println("Select one of the features by entering: " +
