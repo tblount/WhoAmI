@@ -9,8 +9,7 @@ import java.util.stream.Collectors;
 
 public class CharacterDatabase implements Character {
     private List<Person> characterDB = new CharacterLoader("data/character-data.csv").load();
-
-    Collection<Person> people;
+    Collection<Person> people = characterDB;
 
     public CharacterDatabase() throws IOException {
     }
@@ -25,7 +24,7 @@ public class CharacterDatabase implements Character {
 
     @Override
     public Collection<Person> filterByHair(boolean hair) {
-        people = characterDB.stream()
+        people = people.stream()
                 .filter(chars -> chars.hasHair() == hair)
                 .collect(Collectors.toList());
         return people;
@@ -33,7 +32,7 @@ public class CharacterDatabase implements Character {
 
     @Override
     public Collection<Person> filterByHairLength(HairLength hairLength) {
-        people = characterDB.stream()
+        people = people.stream()
                 .filter(chars -> chars.getHairLength().equals(hairLength))
                 .collect(Collectors.toList());
         return people;
@@ -41,7 +40,7 @@ public class CharacterDatabase implements Character {
 
     @Override
     public Collection<Person> filterByGlasses(boolean glasses) {
-        people = characterDB.stream()
+        people = people.stream()
                 .filter(chars -> chars.hasGlasses() == glasses)
                 .collect(Collectors.toList());
         return people;
@@ -49,7 +48,7 @@ public class CharacterDatabase implements Character {
 
     @Override
     public Collection<Person> filterByCover(boolean cover) {
-        people = characterDB.stream()
+        people = people.stream()
                 .filter(chars -> chars.hasCover() == cover)
                 .collect(Collectors.toList());
         return people;
@@ -57,7 +56,7 @@ public class CharacterDatabase implements Character {
 
     @Override
     public Collection<Person> filterByBeard(boolean beard) {
-        people = characterDB.stream()
+        people = people.stream()
                 .filter(chars -> chars.hasBeard() == beard)
                 .collect(Collectors.toList());
         return people;
@@ -65,7 +64,7 @@ public class CharacterDatabase implements Character {
 
     @Override
     public int size() {
-        return characterDB.size();
+        return people.size();
     }
 
     @Override
