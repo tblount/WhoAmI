@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CharacterDatabase implements Character {
+
     private List<Person> characterDB = new CharacterLoader("data/character-data.csv").load();
     private Collection<Person> people = characterDB;
 

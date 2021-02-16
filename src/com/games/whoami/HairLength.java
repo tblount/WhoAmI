@@ -3,6 +3,7 @@ package com.games.whoami;
 public enum HairLength {
     BALD, SHORT, MEDIUM, LONG;
 
+    // built method ordinal Hairlength.BOLD.ordinal() == 0;
     public static HairLength select(int selection) {
         HairLength hairLength = null;
         switch (selection) {

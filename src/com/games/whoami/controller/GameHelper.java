@@ -1,11 +1,15 @@
-package com.games.whoami;
+package com.games.whoami.controller;
+
+import com.games.whoami.Character;
+import com.games.whoami.Person;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class GameHelper {
-    public static String playerSelection(int selection) {
+
+    public String playerSelection(int selection) {
         String choice = null;
         switch (selection) {
             case 1:
@@ -27,7 +31,7 @@ public class GameHelper {
         return choice;
     }
 
-    public static List<String> playerOptionNames(Character character, int selection, boolean playerInput) {
+    public List<String> playerOptionNames(Character character, int selection, boolean playerInput) {
         Collection<Person> people = null;
         switch (selection) {
             case 1:
@@ -46,11 +50,11 @@ public class GameHelper {
         return listNames(people);
     }
 
-    public static List<String> listNames(Character character) {
+    public List<String> listNames(Character character) {
         return listNames(character.getAll());
     }
 
-    public static List<String> listNames(Collection<Person> persons) {
+    public List<String> listNames(Collection<Person> persons) {
         List<String> names = new ArrayList<>();
         persons.forEach(name -> {
             if (name.getName().length() > 0) {
