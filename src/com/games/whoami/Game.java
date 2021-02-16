@@ -8,7 +8,7 @@ import java.util.Scanner;
 import static com.games.whoami.GameHelper.*;
 
 public class Game {
-    public static void main(String[] args) throws IOException {
+    public void run() throws IOException {
 
         Character character = new CharacterDatabase();
 
