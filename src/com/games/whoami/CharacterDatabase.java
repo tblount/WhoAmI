@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class CharacterDatabase implements Character {
     private List<Person> characterDB = new CharacterLoader("data/character-data.csv").load();
-    Collection<Person> people = characterDB;
+    private Collection<Person> people = characterDB;
 
     public CharacterDatabase() throws IOException {
     }
