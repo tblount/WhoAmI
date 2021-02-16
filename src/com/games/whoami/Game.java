@@ -1,13 +1,14 @@
 package com.games.whoami;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.games.whoami.GameHelper.*;
+
 public class Game {
-    public static void main(String[] args) throws IOException {
+    public void run() throws IOException {
 
         Character character = new CharacterDatabase();
 
@@ -18,7 +19,7 @@ public class Game {
                 "\nthe mystery person by feature or try guessing their name directly!" +
                 "\nGood luck!");
 
-        System.out.println("\n" +"Starting the game now!\nHave a blast!");
+        System.out.println("\n" + "Starting the game now!\nHave a blast!");
 
         System.out.println("\n***************\n" + listNames(character) + "\n***************\n");
 
@@ -63,60 +64,5 @@ public class Game {
             }*/
         }
         System.out.println("Congratulations! You found your mystery character!");
-    }
-
-/*    public static void findByName(String name, Character character) {
-        List<String> allnames = listNames(character);
-        if (allnames.contains(name)) {
-            System.out.println("Congratulations you found the character: " + name);
-        } else {
-            System.out.println("Please try again.");
-        }
-    }*/
-
-    public static String playerSelection(int selection) {
-        String choice = null;
-        switch (selection) {
-            case 1: choice = "Hair";
-                break;
-            case 2: choice = "HairLength";
-                break;
-            case 3: choice = "Glasses";
-                break;
-            case 4: choice = "Cover";
-                break;
-            case 5: choice = "Beard";
-                break;
-        }
-        return choice;
-    }
-
-    public static List<String> playerOptionNames(Character character, int selection, boolean playerInput) {
-        Collection<Person> people = null;
-        switch (selection) {
-            case 1: people = character.filterByHair(playerInput);
-                break;
-            case 3: people = character.filterByGlasses(playerInput);
-                break;
-            case 4: people = character.filterByCover(playerInput);
-                break;
-            case 5: people = character.filterByBeard(playerInput);
-                break;
-        }
-        return listNames(people);
-    }
-
-    public static List<String> listNames(Character character) {
-        return listNames(character.getAll());
-    }
-
-    public static List<String> listNames(Collection<Person> persons) {
-        List<String> names = new ArrayList<>();
-        persons.forEach(name -> {
-            if (name.getName().length() > 0) {
-                names.add(name.getName());
-            }
-        });
-        return names;
     }
 }
