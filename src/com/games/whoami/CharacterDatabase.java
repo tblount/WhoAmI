@@ -1,10 +1,7 @@
 package com.games.whoami;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CharacterDatabase implements Character {
@@ -13,6 +10,14 @@ public class CharacterDatabase implements Character {
     private Collection<Person> people = characterDB;
 
     public CharacterDatabase() throws IOException {
+    }
+
+    @Override
+    public Person randomPerson() {
+        Person result = null;
+        Collections.shuffle(characterDB);
+        result = characterDB.get(0);
+        return result;
     }
 
     @Override

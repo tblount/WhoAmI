@@ -24,6 +24,10 @@ public class Game {
         //TODO: break down to private calls
         Character character = new CharacterDatabase();
 
+        // creating random/mystery
+        String mysteryPerson = character.randomPerson().getName();
+        System.out.println("Assigned random person: " + mysteryPerson);
+
         Scanner input = new Scanner(System.in);
 
         // implement welcome method

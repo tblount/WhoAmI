@@ -3,6 +3,8 @@ package com.games.whoami;
 import java.util.Collection;
 
 public interface Character {
+    Person randomPerson();
+
     Collection<Person> filterByName(String name);
 
     Collection<Person> filterByHair(boolean hair);
