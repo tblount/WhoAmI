@@ -1,5 +1,6 @@
 package com.games.whoami;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -7,28 +8,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CharacterDatabase implements Character {
-    private List<Person> characterDB = Arrays.asList(
-            new Person("Mahatma Gandi", false, HairLength.BALD, true, false, false),
-            new Person("Muhammad Ali", true, HairLength.SHORT, false, false, false),
-            new Person("Marilyn Monroe", true, HairLength.MEDIUM, false, false, false),
-            new Person("Abraham Lincoln", true, HairLength.SHORT, false, true, true),
-            new Person("Mother Teresa", true, HairLength.LONG, false, true, false),
-            new Person("Charles Darwin", false, HairLength.BALD, false, false, true),
-            new Person("Queen Victoria", true, HairLength.LONG, false, true, false),
-            new Person("Leonardo da Vinci", false, HairLength.BALD, false, false, true),
-            new Person("Franklin Roosevelt", true, HairLength.SHORT, true, false, false),
-            new Person("JK Rowling", true, HairLength.LONG, false, false, false),
-            new Person("Winston Churchill", true, HairLength.SHORT, false, true, false),
-            new Person("Albert Einstein", true, HairLength.SHORT, false, false, true),
-            new Person("Rosa Parks", true, HairLength.LONG, true, false, false),
-            new Person("Amelia Earhart", true, HairLength.MEDIUM, false, false, false),
-            new Person("Steve Jobs", false, HairLength.BALD, true, false, true),
-            new Person("Karl Marx", true, HairLength.MEDIUM, false, false, true),
-            new Person("Santa Claus", true, HairLength.MEDIUM, true, true, true),
-            new Person("William Shakespeare", true, HairLength.MEDIUM, false, false, true)
-    );
+    private List<Person> characterDB = new CharacterLoader("data/character-data.csv").load();
 
     Collection<Person> people;
+
+    public CharacterDatabase() throws IOException {
+    }
 
     @Override
     public Collection<Person> filterByName(String name) {

@@ -1,12 +1,13 @@
 package com.games.whoami;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Character character = new CharacterDatabase();
 
@@ -14,7 +15,7 @@ public class Game {
 
         System.out.println("\nWelcome to the guess game: Who Am I?" +
                 "\nRules: Each player take guesses until one of them reveals " +
-                "\n the mystery person by feature or try guessing their name directly!" +
+                "\nthe mystery person by feature or try guessing their name directly!" +
                 "\nGood luck!");
 
         System.out.println("\n" +"Starting the game now!!\n Have a blast!");
