@@ -11,7 +11,6 @@ public class Game {
 
         Character character = new CharacterDatabase();
 
-
         Scanner input = new Scanner(System.in);
 
         System.out.println("\nWelcome to the guess game: Who Am I?" +
@@ -19,7 +18,7 @@ public class Game {
                 "\nthe mystery person by feature or try guessing their name directly!" +
                 "\nGood luck!");
 
-        System.out.println("\n" +"Starting the game now!!\n Have a blast!");
+        System.out.println("\n" +"Starting the game now!\nHave a blast!");
 
         System.out.println("\n***************\n" + listNames(character) + "\n***************\n");
 
@@ -46,13 +45,7 @@ public class Game {
 
                     System.out.println("\n**********\n" + currentNames + "\n**********\n");
                 } else {
-                    System.out.println("\n What is the hair length: " +
-                            "\n 1 - Short, 2 - Medium, 3 - Long, 4 - Bald \n");
-                    int playerInput = input.nextInt();
-                    Collection<String> currentNames = listNames(character.filterByHairLength(HairLength.select(playerInput)));
-
-                    System.out.println("\n**********\n" + currentNames + "\n**********\n");
-
+                    System.out.println("\nWhat is the hair length: ");
                 }
             } /*else if (nameOrFeature == 1) {
                 System.out.println("Please type the name of the person below: ");
@@ -62,6 +55,7 @@ public class Game {
                 System.out.println("Enter *1* to guess by Name or *2* to guess by Features!");
             }*/
         }
+        System.out.println("Congratulations! You found your mystery character!");
     }
 
 /*    public static void findByName(String name, Character character) {
@@ -73,45 +67,58 @@ public class Game {
         }
     }*/
 
+    public static List<String> listNames(Character character) {
+        List<String> names = new ArrayList<>();
+        character.getAll().forEach(name -> {
+            if (name.getName().length() > 0) {
+                names.add(name.getName());
+            }
+        });
+
+        return names;
+    }
+
     public static String playerSelection(int selection) {
         String choice = null;
         switch (selection) {
-            case 1: choice = "Hair";
+            case 1:
+                choice = "Hair";
                 break;
-            case 2: choice = "HairLength";
+            case 2:
+                choice = "HairLength";
                 break;
-            case 3: choice = "Glasses";
+            case 3:
+                choice = "Glasses";
                 break;
-            case 4: choice = "Cover";
+            case 4:
+                choice = "Cover";
                 break;
-            case 5: choice = "Beard";
+            case 5:
+                choice = "Beard";
                 break;
         }
         return choice;
     }
 
     public static List<String> playerOptionNames(Character character, int selection, boolean playerInput) {
+        List<String> names = new ArrayList<>();
         Collection<Person> people = null;
         switch (selection) {
-            case 1: people = character.filterByHair(playerInput);
+            case 1:
+                people = character.filterByHair(playerInput);
                 break;
-            case 3: people = character.filterByGlasses(playerInput);
+            case 3:
+                people = character.filterByGlasses(playerInput);
                 break;
-            case 4: people = character.filterByCover(playerInput);
+            case 4:
+                people = character.filterByCover(playerInput);
                 break;
-            case 5: people = character.filterByBeard(playerInput);
+            case 5:
+                people = character.filterByBeard(playerInput);
                 break;
         }
-        return listNames(people);
-    }
 
-    public static List<String> listNames(Character character) {
-        return listNames(character.getAll());
-    }
-
-    public static List<String> listNames(Collection<Person> persons) {
-        List<String> names = new ArrayList<>();
-        persons.forEach(name -> {
+        people.forEach(name -> {
             if (name.getName().length() > 0) {
                 names.add(name.getName());
             }
