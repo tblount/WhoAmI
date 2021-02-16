@@ -63,7 +63,7 @@ public class Game {
                     System.out.println("\n What is the hair length: " +
                             "\n 1 - Short, 2 - Medium, 3 - Long, 4 - Bald \n");
                     int playerInput = input.nextInt();
-                    Collection<String> currentNames = gameHelper.listNames((Character) character.filterByHairLength(HairLength.select(playerInput)));
+                    Collection<String> currentNames = gameHelper.listNames(character.filterByHairLength(gameHelper.hairSelection(playerInput)));
 
                     System.out.println("\n**********\n" + currentNames + "\n**********\n");
                 }

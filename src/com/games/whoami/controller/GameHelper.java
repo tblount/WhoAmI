@@ -1,6 +1,7 @@
 package com.games.whoami.controller;
 
 import com.games.whoami.Character;
+import com.games.whoami.HairLength;
 import com.games.whoami.Person;
 
 import java.util.ArrayList;
@@ -48,6 +49,25 @@ public class GameHelper {
                 break;
         }
         return listNames(people);
+    }
+
+    public HairLength hairSelection(int selection) {
+        HairLength hairLength = null;
+        switch (selection) {
+            case 1:
+                hairLength = HairLength.SHORT;
+                break;
+            case 2:
+                hairLength = HairLength.MEDIUM;
+                break;
+            case 3:
+                hairLength = HairLength.LONG;
+                break;
+            case 4:
+                hairLength = HairLength.BALD;
+                break;
+        }
+        return hairLength;
     }
 
     public List<String> listNames(Character character) {
