@@ -18,7 +18,7 @@ public class Game {
                 "\nthe mystery person by feature or try guessing their name directly!" +
                 "\nGood luck!");
 
-        System.out.println("\n" +"Starting the game now!!\n Have a blast!");
+        System.out.println("\n" +"Starting the game now!\nHave a blast!");
 
         System.out.println("\n***************\n" + listNames(character) + "\n***************\n");
 
@@ -55,6 +55,7 @@ public class Game {
                 System.out.println("Enter *1* to guess by Name or *2* to guess by Features!");
             }*/
         }
+        System.out.println("Congratulations! You found your mystery character!");
     }
 
 /*    public static void findByName(String name, Character character) {
