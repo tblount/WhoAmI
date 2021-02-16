@@ -7,9 +7,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Play {
-    public static void main(String[] args) throws IOException {
-        // TODO: try catch exception
-        Game game = new Game(new Prompter(new Scanner(System.in)));
-        game.run();
+    public static void main(String[] args) {
+        try {
+            Game game = new Game(new Prompter(new Scanner(System.in)));
+            game.run();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
