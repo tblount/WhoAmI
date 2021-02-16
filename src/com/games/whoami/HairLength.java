@@ -17,4 +17,8 @@ public enum HairLength {
         }
         return hairLength;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1a8f9c3cac1a31590deeb3257675f547cbddd814
