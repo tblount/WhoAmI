@@ -1,7 +1,7 @@
-package com.games.whoami;
-
-import com.games.whoami.controller.Game;
-import com.games.whoami.controller.GameHelper;
+package com.games.whoami.controller;
+import com.games.whoami.Character;
+import com.games.whoami.CharacterDatabase;
+import com.games.whoami.Person;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class GameTest {
     GameHelper gameHelper;
 
     @Before
-    public void init() {
+    public void init() throws IOException {
         gameHelper = new GameHelper();
     }
 

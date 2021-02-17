@@ -14,10 +14,8 @@ public class CharacterDatabase implements Character {
 
     @Override
     public Person randomPerson() {
-        Person result = null;
         Collections.shuffle(characterDB);
-        result = characterDB.get(0);
-        return result;
+        return characterDB.get(0);
     }
 
     @Override

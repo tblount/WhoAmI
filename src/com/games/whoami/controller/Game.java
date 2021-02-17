@@ -3,7 +3,6 @@ package com.games.whoami.controller;
 import com.apps.util.Prompter;
 import com.games.whoami.Character;
 import com.games.whoami.CharacterDatabase;
-import com.games.whoami.HairLength;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -11,13 +10,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    private Prompter prompter;
+    private Prompter prompter = new Prompter(new Scanner(System.in));
 
-    public Game(Prompter prompter) {
-        this.prompter = prompter;
+    GameHelper gameHelper = new GameHelper();
+
+    public Game() throws IOException {
     }
-
-    private GameHelper gameHelper = new GameHelper();
 
     public void run() throws IOException {
 
@@ -31,15 +29,8 @@ public class Game {
         Scanner input = new Scanner(System.in);
 
         // implement welcome method
-        System.out.println("\nWelcome to the guess game: Who Am I?" +
-                "\nRules: Each player take guesses until one of them reveals " +
-                "\nthe mystery person by feature or try guessing their name directly!" +
-                "\nGood luck!");
-
-        System.out.println("\n" + "Starting the game now!\nHave a blast!");
-
-        System.out.println("\n=================================================================================================" +
-                "=============================================================================================\n" + gameHelper.listNames(character));
+        gameHelper.printer.welcome();
+        gameHelper.printer.printList(gameHelper.listNames(character));
 
         while (character.size() != 1) {
             // make prompt calls
@@ -48,7 +39,8 @@ public class Game {
 
             int nameOrFeature = input.nextInt();
             if (nameOrFeature == 1) {
-                prompter.prompt("Make a choice from the list - " + gameHelper.listNames(character));
+                prompter.prompt("Make a choice from the list - ");
+                gameHelper.printer.printList(gameHelper.listNames(character));
                 //System.out.println("Make a choice from the list - " + gameHelper.listNames(character));
             }
             if (nameOrFeature == 2) {
@@ -84,4 +76,5 @@ public class Game {
         }
         System.out.println("Congratulations! You found your mystery character!");
     }
+
 }
