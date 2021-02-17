@@ -43,11 +43,13 @@ public class Game {
 
         while (character.size() != 1) {
             // make prompt calls
-            System.out.println("Enter (1) to guess by Name or (2) to guess by Features!");
+            prompter.prompt("Enter (1) to guess by Name or (2) to guess by Features!");   // This Line changed by Terrance to update using prompter
+            //System.out.println("Enter (1) to guess by Name or (2) to guess by Features!");
 
             int nameOrFeature = input.nextInt();
             if (nameOrFeature == 1) {
-                System.out.println("Make a choice from the list - " + gameHelper.listNames(character));
+                prompter.prompt("Make a choice from the list - " + gameHelper.listNames(character));
+                //System.out.println("Make a choice from the list - " + gameHelper.listNames(character));
             }
             if (nameOrFeature == 2) {
                 System.out.println("Select one of the features by entering: " +
