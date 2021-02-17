@@ -11,14 +11,10 @@ public class Play implements SplashApp {
 
     @Override
     public void start() {
-        Game game = new Game();
-        game.initialize();
+        System.out.println("Welcome to the Game!!!");
     }
     public static void main(String[] args) {
 
-        Play app = new Play();
-        app.welcome("images/logo.jpg", "images/credits.png");
-        app.start();
         try {
             Game game = new Game();
             Prompter prompter = new Prompter(new Scanner(System.in));
@@ -26,5 +22,8 @@ public class Play implements SplashApp {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        Play app = new Play();
+        app.welcome("images/java.png", "images/credits.jpg");
+        app.start();
     }
 }
