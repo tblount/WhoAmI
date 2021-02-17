@@ -14,10 +14,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+
 class GameHelper {
     Printer printer = new Printer();
 
-    GameHelper () throws IOException {
+    GameHelper() throws IOException {
     }
 
     String playerSelection(int selection) {
@@ -104,13 +105,14 @@ class GameHelper {
             this.dataFilePath = Path.of("data/messages.csv");
             this.messages = Files.lines(dataFilePath).collect(Collectors.toList());
         }
-        void welcome(){
+
+        void welcome() {
             Arrays.stream(messages.get(0).split("/n")).forEach(System.out::println);
             Arrays.stream(messages.get(1).split("/n")).forEach(System.out::println);
         }
-        void printList(List<String> names){
+
+        void printList(List<String> names) {
             names.forEach(System.out::println);
         }
     }
-
 }

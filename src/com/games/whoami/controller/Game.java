@@ -34,16 +34,13 @@ public class Game {
 
         while (character.size() != 1) {
             // make prompt calls
-            prompter.prompt("Enter (1) to guess by Name or (2) to guess by Features!");   // This Line changed by Terrance to update using prompter
-            //System.out.println("Enter (1) to guess by Name or (2) to guess by Features!");
+            prompter.prompt("\nPlease enter (1) to guess by Name or (2) to guess by Features!\n");
 
             int nameOrFeature = input.nextInt();
             if (nameOrFeature == 1) {
                 prompter.prompt("Make a choice from the list - ");
                 gameHelper.printer.printList(gameHelper.listNames(character));
-                //System.out.println("Make a choice from the list - " + gameHelper.listNames(character));
-            }
-            if (nameOrFeature == 2) {
+            } else if (nameOrFeature == 2) {
                 System.out.println("Select one of the features by entering: " +
                         "\n 1 - Hair, 2 - HairLength, 3 - Glasses, 4 - Cover, 5 - Beard \n");
 
@@ -66,13 +63,9 @@ public class Game {
 
                     System.out.println("\n**********\n" + currentNames + "\n**********\n");
                 }
-            } /*else if (nameOrFeature == 1) {
-                System.out.println("Please type the name of the person below: ");
-                String name = input.nextLine();
-                findByName(name, character);
             } else {
-                System.out.println("Enter *1* to guess by Name or *2* to guess by Features!");
-            }*/
+                prompter.prompt("\nEnter (1) to guess by Name or (2) to guess by Features!\n");
+            }
         }
         System.out.println("Congratulations! You found your mystery character!");
     }
