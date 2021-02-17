@@ -41,20 +41,24 @@ public class Game {
 
         while (character.size() != 1) {
             // make prompt calls
-            prompter.prompt("Enter (1) to guess by Name or (2) to guess by Features!");   // This Line changed by Terrance to update using prompter
-            //System.out.println("Enter (1) to guess by Name or (2) to guess by Features!");
+            //prompter.prompt("Enter (1) to guess by Name or (2) to guess by Features!");   // This Line changed by Terrance to update using prompter
+            System.out.println("Enter (1) to guess by Name or (2) to guess by Features!");
 
             int nameOrFeature = input.nextInt();
             if (nameOrFeature == 1) {
-                prompter.prompt("Make a choice from the list - " + gameHelper.listNames(character));
-                //System.out.println("Make a choice from the list - " + gameHelper.listNames(character));
+                //prompter.prompt("Make a choice from the list - " + gameHelper.listNames(character));
+                System.out.println("Make a choice from the list - " + gameHelper.listNames(character));
+                String nameSelect = input.next();
+                if (nameSelect.equals(mysteryPerson)) {
+                    System.out.println("You win!!!");
+                } else continue;
             }
 
             if (nameOrFeature == 2) {
-                prompter.prompt("Select one of the features by entering: " +
-                        "\n 1 - Hair, 2 - HairLength, 3 - Glasses, 4 - Cover, 5 - Beard \n");
-//                System.out.println("Select one of the features by entering: " +
+//                prompter.prompt("Select one of the features by entering: " +
 //                        "\n 1 - Hair, 2 - HairLength, 3 - Glasses, 4 - Cover, 5 - Beard \n");
+                System.out.println("Select one of the features by entering: " +
+                        "\n 1 - Hair, 2 - HairLength, 3 - Glasses, 4 - Cover, 5 - Beard \n");
 
                 int featureSelection = input.nextInt();
                 System.out.println(gameHelper.playerSelection(featureSelection) + " selected.");
