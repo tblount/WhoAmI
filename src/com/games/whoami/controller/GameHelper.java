@@ -10,6 +10,14 @@ import java.util.List;
 
 public class GameHelper {
 
+    public String Welcome() {
+        System.out.println("\nWelcome to the guess game: Who Am I?" +
+                "\nRules: The player will take a guess until the player reveals " +
+                "\nthe mystery person by guessing a feature or their name directly!" +
+                "\nGood luck!");
+        return String.valueOf(0);
+    }
+
     public String playerSelection(int selection) {
         String choice = null;
         switch (selection) {

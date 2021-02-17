@@ -3,7 +3,6 @@ package com.games.whoami.controller;
 import com.apps.util.Prompter;
 import com.games.whoami.Character;
 import com.games.whoami.CharacterDatabase;
-import com.games.whoami.HairLength;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -31,10 +30,7 @@ public class Game {
         Scanner input = new Scanner(System.in);
 
         // implement welcome method
-        System.out.println("\nWelcome to the guess game: Who Am I?" +
-                "\nRules: Each player take guesses until one of them reveals " +
-                "\nthe mystery person by feature or try guessing their name directly!" +
-                "\nGood luck!");
+        System.out.println(gameHelper.Welcome());
 
         System.out.println("\n" + "Starting the game now!\nHave a blast!");
 
