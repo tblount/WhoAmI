@@ -20,9 +20,8 @@ class GameHelper {
     }
 
     Character character = new CharacterDatabase();
-    private Prompter prompter = new Prompter(new Scanner(System.in));
 
-    void gameLogic(String mysteryPerson) {
+    void gameLogic(String mysteryPerson, Prompter prompter) {
         while (character.size() != 1) {
             // make prompt calls
             String nameOrFeature = prompter.prompt("\nPlease enter (1) to guess by Name or (2) to guess by Features!\n",

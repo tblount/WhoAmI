@@ -1,5 +1,6 @@
 package com.games.whoami.controller;
 
+import com.apps.util.Prompter;
 import com.games.whoami.Character;
 import com.games.whoami.CharacterDatabase;
 
@@ -11,7 +12,7 @@ public class Game {
     public Game() throws IOException {
     }
 
-    public void run() throws IOException {
+    public void run(Prompter prompter) throws IOException {
 
         //TODO: break down to private calls
         Character character = new CharacterDatabase();
@@ -23,7 +24,7 @@ public class Game {
         // implement welcome method
         gameHelper.printer.welcome();
         gameHelper.printer.printList(gameHelper.listNames(character));
-        gameHelper.gameLogic(mysteryPerson);
+        gameHelper.gameLogic(mysteryPerson, prompter);
         gameHelper.printer.win(mysteryPerson);
     }
 }
