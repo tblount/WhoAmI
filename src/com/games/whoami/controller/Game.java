@@ -25,6 +25,6 @@ public class Game {
         gameHelper.printer.welcome();
         gameHelper.printer.printList(gameHelper.listNames(character));
         gameHelper.gameLogic(mysteryPerson, prompter);
-        gameHelper.printer.win(mysteryPerson);
+        gameHelper.win(mysteryPerson);
     }
 }

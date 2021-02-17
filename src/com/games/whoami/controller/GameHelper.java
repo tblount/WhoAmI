@@ -59,6 +59,9 @@ class GameHelper {
             }
         }
     }
+    void win(String mysteryPerson) {
+        System.out.println("Congratulations! You found the Mystery Character: " + mysteryPerson);
+    }
 
     String playerSelection(int selection) {
         String choice = null;
@@ -135,7 +138,6 @@ class GameHelper {
     }
 
     //InnerClass
-
     class Printer {
         Path dataFilePath;
         List<String> messages;
@@ -156,10 +158,6 @@ class GameHelper {
 
         void choice(String selected) {
             System.out.println(selected + " selected.");
-        }
-
-        void win(String mysteryPerson) {
-            System.out.println("Congratulations! You found the Mystery Character: " + mysteryPerson);
         }
     }
 }
