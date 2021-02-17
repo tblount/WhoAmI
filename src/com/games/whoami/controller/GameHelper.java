@@ -111,8 +111,16 @@ class GameHelper {
             Arrays.stream(messages.get(1).split("/n")).forEach(System.out::println);
         }
 
-        void printList(List<String> names) {
+        void printList(Collection<String> names) {
             names.forEach(System.out::println);
+        }
+
+        void choice(String selected){
+            System.out.println(selected + " selected.");
+        }
+
+        void win(String mysteryPerson){
+            System.out.println("Congratulations! You found the Mystery Character - " + mysteryPerson);
         }
     }
 }

@@ -34,40 +34,41 @@ public class Game {
 
         while (character.size() != 1) {
             // make prompt calls
-            prompter.prompt("\nPlease enter (1) to guess by Name or (2) to guess by Features!\n");
+            String nameOrFeature = prompter.prompt("\nPlease enter (1) to guess by Name or (2) to guess by Features!\n",
+                    "[1-2]","Not Valid Answer, Try Again");
 
-            int nameOrFeature = input.nextInt();
-            if (nameOrFeature == 1) {
-                prompter.prompt("Make a choice from the list - ");
+            if (nameOrFeature.equals("1")) {
                 gameHelper.printer.printList(gameHelper.listNames(character));
-            } else if (nameOrFeature == 2) {
-                System.out.println("Select one of the features by entering: " +
-                        "\n 1 - Hair, 2 - HairLength, 3 - Glasses, 4 - Cover, 5 - Beard \n");
-
-                int featureSelection = input.nextInt();
-                System.out.println(gameHelper.playerSelection(featureSelection) + " selected.");
-
-                if (featureSelection != 2) {
-                    System.out.println("\nNow please write: (true) if your character has " + gameHelper.playerSelection(featureSelection)
-                            + " or (false) if he/she doesn't.");
-
-                    boolean playerInput = input.nextBoolean();
-                    List<String> currentNames = gameHelper.playerOptionNames(character, featureSelection, playerInput);
-
-                    System.out.println("\n**********\n" + currentNames + "\n**********\n");
-                } else {
-                    System.out.println("\n What is the hair length: " +
-                            "\n 1 - Short, 2 - Medium, 3 - Long, 4 - Bald \n");
-                    int playerInput = input.nextInt();
-                    Collection<String> currentNames = gameHelper.listNames(character.filterByHairLength(gameHelper.hairSelection(playerInput)));
-
-                    System.out.println("\n**********\n" + currentNames + "\n**********\n");
+                String name = prompter.prompt("Make a choice from the list - \n");
+                if (mysteryPerson.equalsIgnoreCase(name)){
+                    break;
                 }
             } else {
-                prompter.prompt("\nEnter (1) to guess by Name or (2) to guess by Features!\n");
+
+                String featureSelected = prompter.prompt("Select one of the features by entering: " +
+                        "\n 1 - Hair, 2 - HairLength, 3 - Glasses, 4 - Cover, 5 - Beard \n","[1-5]","Invalid Entry, Try Again");
+                int featureSelection = Integer.parseInt(featureSelected);
+
+                gameHelper.printer.choice(gameHelper.playerSelection(featureSelection));
+
+                if (featureSelection != 2) {
+                    String playerChoice = prompter.prompt("\nNow please write: (true) if you think your character has " +
+                            gameHelper.playerSelection(featureSelection)
+                            + " or (false) if he/she doesn't.\n","true|false|True|False","Invalid Entry, Try Again!");
+                    boolean playerInput = Boolean.parseBoolean(playerChoice);
+                    List<String> currentNames = gameHelper.playerOptionNames(character, featureSelection, playerInput);
+                    gameHelper.printer.printList(currentNames);
+                } else {
+                    String playerChoice = prompter.prompt("\n What is the hair length: "
+                                    + "\n 1 - Short, 2 - Medium, 3 - Long, 4 - Bald \n"
+                                    ,"[1-4]","Invalid Entry, Try Again!");
+                    int playerInput = Integer.parseInt(playerChoice);
+                    List<String> currentNames = gameHelper.listNames(character.filterByHairLength(gameHelper.hairSelection(playerInput)));
+                    gameHelper.printer.printList(currentNames);
+                }
             }
         }
-        System.out.println("Congratulations! You found your mystery character!");
+        gameHelper.printer.win(mysteryPerson);
     }
 
 }
