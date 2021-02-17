@@ -15,7 +15,7 @@ public class CharacterDatabase implements Character {
     @Override
     public Person randomPerson() {
         Collections.shuffle(characterDB);
-        return characterDB.get(0);
+        return characterDB.get(11);
     }
 
     @Override
