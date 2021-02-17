@@ -38,11 +38,12 @@ public class Game {
 
         System.out.println("\n" + "Starting the game now!\nHave a blast!");
 
-        System.out.println("\n***************\n" + gameHelper.listNames(character) + "\n***************\n");
+        System.out.println("\n=================================================================================================" +
+                "=============================================================================================\n" + gameHelper.listNames(character));
 
         while (character.size() != 1) {
             // make prompt calls
-            System.out.println("Enter *1* to guess by Name or *2* to guess by Features!");
+            System.out.println("Enter (1) to guess by Name or (2) to guess by Features!");
 
             int nameOrFeature = input.nextInt();
             if (nameOrFeature == 1) {
@@ -56,8 +57,8 @@ public class Game {
                 System.out.println(gameHelper.playerSelection(featureSelection) + " selected.");
 
                 if (featureSelection != 2) {
-                    System.out.println("\nNow please write: *true* if your character has " + gameHelper.playerSelection(featureSelection)
-                            + " or *false* if he/she doesn't.");
+                    System.out.println("\nNow please write: (true) if your character has " + gameHelper.playerSelection(featureSelection)
+                            + " or (false) if he/she doesn't.");
 
                     boolean playerInput = input.nextBoolean();
                     List<String> currentNames = gameHelper.playerOptionNames(character, featureSelection, playerInput);
