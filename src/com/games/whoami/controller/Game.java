@@ -35,7 +35,9 @@ public class Game {
         System.out.println("\n" + "Starting the game now!\nHave a blast!");
 
         System.out.println("\n=================================================================================================" +
-                "=============================================================================================\n" + gameHelper.listNames(character));
+                "=============================================================================================\n" + gameHelper.listNames(character) +
+                "\n=================================================================================================" +
+                "=============================================================================================\n");
 
         while (character.size() != 1) {
             // make prompt calls
@@ -47,9 +49,12 @@ public class Game {
                 prompter.prompt("Make a choice from the list - " + gameHelper.listNames(character));
                 //System.out.println("Make a choice from the list - " + gameHelper.listNames(character));
             }
+
             if (nameOrFeature == 2) {
-                System.out.println("Select one of the features by entering: " +
+                prompter.prompt("Select one of the features by entering: " +
                         "\n 1 - Hair, 2 - HairLength, 3 - Glasses, 4 - Cover, 5 - Beard \n");
+//                System.out.println("Select one of the features by entering: " +
+//                        "\n 1 - Hair, 2 - HairLength, 3 - Glasses, 4 - Cover, 5 - Beard \n");
 
                 int featureSelection = input.nextInt();
                 System.out.println(gameHelper.playerSelection(featureSelection) + " selected.");
@@ -61,14 +66,20 @@ public class Game {
                     boolean playerInput = input.nextBoolean();
                     List<String> currentNames = gameHelper.playerOptionNames(character, featureSelection, playerInput);
 
-                    System.out.println("\n**********\n" + currentNames + "\n**********\n");
+                    System.out.println("\n=================================================================================================" +
+                            "=============================================================================================\n" + currentNames +
+                            "\n=================================================================================================" +
+                            "=============================================================================================\n");
                 } else {
                     System.out.println("\n What is the hair length: " +
                             "\n 1 - Short, 2 - Medium, 3 - Long, 4 - Bald \n");
                     int playerInput = input.nextInt();
                     Collection<String> currentNames = gameHelper.listNames(character.filterByHairLength(gameHelper.hairSelection(playerInput)));
 
-                    System.out.println("\n**********\n" + currentNames + "\n**********\n");
+                    System.out.println("\n=================================================================================================" +
+                            "=============================================================================================\n" + currentNames +
+                            "\n=================================================================================================" +
+                            "=============================================================================================\n");
                 }
             } /*else if (nameOrFeature == 1) {
                 System.out.println("Please type the name of the person below: ");
@@ -78,6 +89,6 @@ public class Game {
                 System.out.println("Enter *1* to guess by Name or *2* to guess by Features!");
             }*/
         }
-        System.out.println("Congratulations! You found your mystery character!");
+        System.out.println("Congratulations! You found your mystery character " + mysteryPerson + "!");
     }
 }
