@@ -1,3 +1,6 @@
+/**
+ *
+ */
 package com.games.whoami.controller;
 
 import com.apps.util.Prompter;
@@ -14,14 +17,12 @@ public class Game {
 
     public void run(Prompter prompter) throws IOException {
 
-        //TODO: break down to private calls
         Character character = new CharacterDatabase();
 
         // creating random/mystery
         String mysteryPerson = character.randomPerson().getName();
         System.out.println("Assigned random person: " + mysteryPerson);
 
-        // implement welcome method
         gameHelper.printer.welcome();
         gameHelper.printer.printList(gameHelper.listNames(character));
         gameHelper.gameLogic(mysteryPerson, prompter);

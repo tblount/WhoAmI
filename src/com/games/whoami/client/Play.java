@@ -8,13 +8,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Play implements SplashApp {
+    Play() {
+
+    }
 
     @Override
     public void start() {
-        System.out.println("Welcome to the Game!!!");
-    }
-    public static void main(String[] args) {
-
         try {
             Game game = new Game();
             Prompter prompter = new Prompter(new Scanner(System.in));
@@ -22,8 +21,10 @@ public class Play implements SplashApp {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+    public static void main(String[] args) {
         Play app = new Play();
-        app.welcome("images/java.png", "images/credits.jpg");
+        app.welcome("images/java.png" ,"images/credits.jpg");
         app.start();
     }
 }
