@@ -20,7 +20,7 @@ public class Game {
 
         // creating random/mystery
         Person mysteryPerson = character.randomPerson();
-        System.out.println("Assigned random person: " + mysteryPerson);
+        // System.out.println("Assigned random person: " + mysteryPerson);
 
         gameHelper.printer.welcome();
         gameHelper.gameLogic(mysteryPerson, prompter);
