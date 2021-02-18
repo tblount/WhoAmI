@@ -22,7 +22,7 @@ public class Play implements SplashApp {
             System.out.println(e.getMessage());
         }
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Play app = new Play();
         app.welcome("images/java.png" ,"images/credits.jpg");
         app.start();

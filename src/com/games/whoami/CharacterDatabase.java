@@ -71,7 +71,6 @@ public class CharacterDatabase implements Character {
         return people.size();
     }
 
-    @Override
     public Collection<Person> getAll() {
         return Collections.unmodifiableCollection(characterDB);
     }

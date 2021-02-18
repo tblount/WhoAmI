@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Collection;
 
 public class GameTest {
     GameHelper gameHelper;
@@ -35,7 +35,7 @@ public class GameTest {
     @Test
     public void playerOptionNames_shouldReturnFilteredNameList_whenListNotEmpty() throws IOException {
         Character character = new CharacterDatabase();
-        List<String> hairList = gameHelper.playerOptionNames(character, 1, true);
-        List<String> noBeardList = gameHelper.playerOptionNames(character, 5, false);
+        Collection<Person> hairList = gameHelper.playerOptionNames(character, 1, true);
+        Collection<Person> noBeardList = gameHelper.playerOptionNames(character, 5, false);
     }
 }
