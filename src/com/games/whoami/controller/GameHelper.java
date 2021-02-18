@@ -53,21 +53,9 @@ class GameHelper {
                 printer.choice(playerSelection(featureSelection));
 
                 if (featureSelection != 2) {
-
                     checkByFeaturesNotHairLength(prompter, featureSelection, mysteryPerson);
-
                 } else {
-                    String playerChoice = prompter.prompt(printer.chooseHairLength, "[1-4]", printer.invalid);
-                    int playerInput = Integer.parseInt(playerChoice);
-                    if (hairLengthEqual(mysteryPerson, playerInput)) {
-                        currentList = character.filterByHairLength(hairSelection(playerInput));
-                        printer.correct();
-                    } else {
-                        printer.incorrect();
-                        currentList = currentList.stream()
-                                .filter(person -> !hairLengthEqual(person, playerInput))
-                                .collect(Collectors.toList());
-                    }
+                    checkByHairLength(prompter, mysteryPerson);
                 }
             } else {
                 printer.suspects();
@@ -90,6 +78,21 @@ class GameHelper {
         }
         System.out.println(guess);
     }
+
+    private void checkByHairLength(Prompter prompter, Person mysteryPerson) {
+        String playerChoice = prompter.prompt(printer.chooseHairLength, "[1-4]", printer.invalid);
+        int playerInput = Integer.parseInt(playerChoice);
+        if (hairLengthEqual(mysteryPerson, playerInput)) {
+            currentList = character.filterByHairLength(hairSelection(playerInput));
+            printer.correct();
+        } else {
+            printer.incorrect();
+            currentList = currentList.stream()
+                    .filter(person -> !hairLengthEqual(person, playerInput))
+                    .collect(Collectors.toList());
+        }
+    }
+
 
     private boolean mysteryPropertyCorrect(Person mysteryPerson, int featureSelection, boolean playerInput) {
         return Boolean.compare(playerInput, mysterySelection(featureSelection, mysteryPerson)) == 0;
