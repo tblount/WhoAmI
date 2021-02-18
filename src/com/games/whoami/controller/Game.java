@@ -14,16 +14,22 @@ public class Game {
     public Game() throws IOException {
     }
 
-    public void run(Prompter prompter) throws IOException {
+    public void run(Prompter prompter) {
 
-        Character character = new CharacterDatabase();
+        try {
+            Character character = new CharacterDatabase();
 
-        // creating random/mystery
-        Person mysteryPerson = character.randomPerson();
-        // System.out.println("Assigned random person: " + mysteryPerson);
+            // creating random/mystery
+            Person mysteryPerson = character.randomPerson();
+            // System.out.println("Assigned random person: " + mysteryPerson);
 
-        gameHelper.printer.welcome();
-        gameHelper.gameLogic(mysteryPerson, prompter);
-        gameHelper.win(mysteryPerson.getName());
+            gameHelper.printer.welcome();
+            gameHelper.gameLogic(mysteryPerson, prompter);
+            gameHelper.win(mysteryPerson.getName());
+            Thread.sleep(5000L);
+        } catch (IOException | InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }

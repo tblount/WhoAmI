@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class Play implements SplashApp {
     Play() {
+
     }
 
     @Override
@@ -21,10 +22,9 @@ public class Play implements SplashApp {
             System.out.println(e.getMessage());
         }
     }
-
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Play app = new Play();
-        app.welcome(3500L, "images/team.png", "images/whoami.png", "images/credits.png");
+        app.welcome("images/team.png","images/whoami.png" ,"images/credits.png");
         app.start();
     }
 }
