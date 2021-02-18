@@ -53,19 +53,9 @@ class GameHelper {
                 printer.choice(playerSelection(featureSelection));
 
                 if (featureSelection != 2) {
-                    String playerChoice = prompter.prompt(printer.chooseBoolean(playerSelection(featureSelection)), "true|false|True|False", printer.invalid);
-                    boolean playerInput = Boolean.parseBoolean(playerChoice);
 
-                    String guess;
-                    if (mysteryPropertyCorrect(mysteryPerson, featureSelection, playerInput)) {
-                        currentList = playerOptionNames(character, featureSelection, playerInput);
-                        guess = printer.correct;
-                    } else {
-                        losses++;
-                        currentList = playerOptionNames(character, featureSelection, mysterySelection(featureSelection, mysteryPerson));
-                        guess = printer.incorrect;
-                    }
-                    System.out.println(guess);
+                    checkByFeaturesNotHairLength(prompter, featureSelection, mysteryPerson);
+
                 } else {
                     String playerChoice = prompter.prompt(printer.chooseHairLength, "[1-4]", printer.invalid);
                     int playerInput = Integer.parseInt(playerChoice);
@@ -83,6 +73,22 @@ class GameHelper {
                 printer.suspects();
             }
         }
+    }
+
+    private void checkByFeaturesNotHairLength(Prompter prompter, int featureSelection, Person mysteryPerson) {
+        String playerChoice = prompter.prompt(printer.chooseBoolean(playerSelection(featureSelection)), "true|false|True|False", printer.invalid);
+        boolean playerInput = Boolean.parseBoolean(playerChoice);
+
+        String guess;
+        if (mysteryPropertyCorrect(mysteryPerson, featureSelection, playerInput)) {
+            currentList = playerOptionNames(character, featureSelection, playerInput);
+            guess = printer.correct;
+        } else {
+            losses++;
+            currentList = playerOptionNames(character, featureSelection, mysterySelection(featureSelection, mysteryPerson));
+            guess = printer.incorrect;
+        }
+        System.out.println(guess);
     }
 
     private boolean mysteryPropertyCorrect(Person mysteryPerson, int featureSelection, boolean playerInput) {
@@ -104,7 +110,6 @@ class GameHelper {
     private boolean nameOrFeature(String nameOrFeature, String s) {
         return nameOrFeature.equals(s);
     }
-
 
     private boolean stillPlaying() {
         return character.size() != 1;
