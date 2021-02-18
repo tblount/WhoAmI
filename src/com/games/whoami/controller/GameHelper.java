@@ -35,33 +35,36 @@ class GameHelper {
             String nameOrFeatureSelection = prompter.prompt(printer.start, "[1-3]", printer.invalid);
 
             if (nameOrFeature(nameOrFeatureSelection, "1")) {
-
                 printer.printList(getCollect());
                 String name = prompter.prompt(printer.chooseName);
+
                 if (pickedRightPerson(mysteryPerson, name)) {
                     break;
                 } else {
                     losses++;
                     printer.incorrect();
                 }
-
             } else if (nameOrFeature(nameOrFeatureSelection, "2")) {
-
-                String featureSelected = prompter.prompt(printer.chooseFeature, "[1-5]", printer.invalid);
-                int featureSelection = Integer.parseInt(featureSelected);
-
-                printer.choice(playerSelection(featureSelection));
-
-                if (featureSelection != 2) {
-                    checkByFeaturesNotHairLength(prompter, featureSelection, mysteryPerson);
-                } else {
-                    checkByHairLength(prompter, mysteryPerson);
-                }
+                checkByFeatures(prompter, mysteryPerson);
             } else {
                 printer.suspects();
             }
         }
     }
+
+    private void checkByFeatures(Prompter prompter, Person mysteryPerson) {
+        String featureSelected = prompter.prompt(printer.chooseFeature, "[1-5]", printer.invalid);
+        int featureSelection = Integer.parseInt(featureSelected);
+
+        printer.choice(playerSelection(featureSelection));
+
+        if (featureSelection != 2) {
+            checkByFeaturesNotHairLength(prompter, featureSelection, mysteryPerson);
+        } else {
+            checkByHairLength(prompter, mysteryPerson);
+        }
+    }
+
 
     private void checkByFeaturesNotHairLength(Prompter prompter, int featureSelection, Person mysteryPerson) {
         String playerChoice = prompter.prompt(printer.chooseBoolean(playerSelection(featureSelection)), "true|false|True|False", printer.invalid);
@@ -82,6 +85,7 @@ class GameHelper {
     private void checkByHairLength(Prompter prompter, Person mysteryPerson) {
         String playerChoice = prompter.prompt(printer.chooseHairLength, "[1-4]", printer.invalid);
         int playerInput = Integer.parseInt(playerChoice);
+
         if (hairLengthEqual(mysteryPerson, playerInput)) {
             currentList = character.filterByHairLength(hairSelection(playerInput));
             printer.correct();
