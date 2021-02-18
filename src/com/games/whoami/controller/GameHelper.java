@@ -19,13 +19,14 @@ class GameHelper {
     Printer printer;
     Character character;
     Collection<Person> currentList = new ArrayList<>();
-    int losses = 0;
     Instant startTime;
+    int losses = 0;
+
     GameHelper() throws IOException {
         printer = new Printer();
         character = new CharacterDatabase();
-         currentList.addAll(character.getAll());
-         startTime = Instant.now();
+        currentList.addAll(character.getAll());
+        startTime = Instant.now();
     }
 
     void gameLogic(Person mysteryPerson, Prompter prompter) {
@@ -39,11 +40,12 @@ class GameHelper {
                 String name = prompter.prompt(printer.chooseName);
                 if (pickedRightPerson(mysteryPerson, name)) {
                     break;
-                }else{
+                } else {
+                    losses++;
                     printer.incorrect();
                 }
 
-            } else if(nameOrFeature(nameOrFeatureSelection, "2")){
+            } else if (nameOrFeature(nameOrFeatureSelection, "2")) {
 
                 String featureSelected = prompter.prompt(printer.chooseFeature, "[1-5]", printer.invalid);
                 int featureSelection = Integer.parseInt(featureSelected);
@@ -55,29 +57,29 @@ class GameHelper {
                     boolean playerInput = Boolean.parseBoolean(playerChoice);
 
                     String guess;
-                    if(mysteryPropertyCorrect(mysteryPerson, featureSelection, playerInput)){
+                    if (mysteryPropertyCorrect(mysteryPerson, featureSelection, playerInput)) {
                         currentList = playerOptionNames(character, featureSelection, playerInput);
-                            guess = printer.correct;
-                        }else{
+                        guess = printer.correct;
+                    } else {
                         losses++;
-                        currentList = playerOptionNames(character, featureSelection, mysterySelection(featureSelection,mysteryPerson));
+                        currentList = playerOptionNames(character, featureSelection, mysterySelection(featureSelection, mysteryPerson));
                         guess = printer.incorrect;
-                        }
+                    }
                     System.out.println(guess);
                 } else {
                     String playerChoice = prompter.prompt(printer.chooseHairLength, "[1-4]", printer.invalid);
                     int playerInput = Integer.parseInt(playerChoice);
-                    if(hairLengthEqual(mysteryPerson, playerInput)){
+                    if (hairLengthEqual(mysteryPerson, playerInput)) {
                         currentList = character.filterByHairLength(hairSelection(playerInput));
                         printer.correct();
-                    }else{
+                    } else {
                         printer.incorrect();
                         currentList = currentList.stream()
                                 .filter(person -> !hairLengthEqual(person, playerInput))
                                 .collect(Collectors.toList());
                     }
                 }
-            }else{
+            } else {
                 printer.suspects();
             }
         }
@@ -109,31 +111,49 @@ class GameHelper {
     }
 
     void win(String mysteryPerson) {
-        long gameTime = Duration.between(startTime,Instant.now()).toSeconds();
-        System.out.println(printer.win + mysteryPerson);
-        System.out.println("Wrong Guesses: "+losses);
-        System.out.println("Time: "+ (int) Math.floor(gameTime/60) + " minutes "+(gameTime % 60)+" seconds.");
+        long gameTime = Duration.between(startTime, Instant.now()).toSeconds();
+        System.out.println(printer.win + " " + mysteryPerson);
+        System.out.println("Wrong Guesses: " + losses);
+        System.out.println("Time: " + (int) Math.floor(gameTime / 60) + " minutes " + (gameTime % 60) + " seconds.");
     }
 
     String playerSelection(int selection) {
         String choice = null;
         switch (selection) {
-            case 1: choice = "Hair"; break;
-            case 2: choice = "HairLength"; break;
-            case 3: choice = "Glasses"; break;
-            case 4: choice = "Cover"; break;
-            case 5: choice = "Beard"; break;
+            case 1:
+                choice = "Hair";
+                break;
+            case 2:
+                choice = "HairLength";
+                break;
+            case 3:
+                choice = "Glasses";
+                break;
+            case 4:
+                choice = "Cover";
+                break;
+            case 5:
+                choice = "Beard";
+                break;
         }
         return choice;
     }
 
-    boolean mysterySelection(int selection,Person mysteryPerson) {
+    boolean mysterySelection(int selection, Person mysteryPerson) {
         boolean choice = false;
         switch (selection) {
-            case 1: choice = mysteryPerson.hasHair();  break;
-            case 3: choice = mysteryPerson.hasGlasses(); break;
-            case 4: choice = mysteryPerson.hasCover(); break;
-            case 5: choice = mysteryPerson.hasBeard(); break;
+            case 1:
+                choice = mysteryPerson.hasHair();
+                break;
+            case 3:
+                choice = mysteryPerson.hasGlasses();
+                break;
+            case 4:
+                choice = mysteryPerson.hasCover();
+                break;
+            case 5:
+                choice = mysteryPerson.hasBeard();
+                break;
         }
         return choice;
     }
@@ -141,10 +161,18 @@ class GameHelper {
     Collection<Person> playerOptionNames(Character character, int selection, boolean playerInput) {
         Collection<Person> people = new ArrayList<>();
         switch (selection) {
-            case 1: people = character.filterByHair(playerInput); break;
-            case 3: people = character.filterByGlasses(playerInput); break;
-            case 4: people = character.filterByCover(playerInput); break;
-            case 5: people = character.filterByBeard(playerInput); break;
+            case 1:
+                people = character.filterByHair(playerInput);
+                break;
+            case 3:
+                people = character.filterByGlasses(playerInput);
+                break;
+            case 4:
+                people = character.filterByCover(playerInput);
+                break;
+            case 5:
+                people = character.filterByBeard(playerInput);
+                break;
         }
         return people;
     }
@@ -152,10 +180,18 @@ class GameHelper {
     HairLength hairSelection(int selection) {
         HairLength hairLength = null;
         switch (selection) {
-            case 1: hairLength = HairLength.SHORT; break;
-            case 2: hairLength = HairLength.MEDIUM; break;
-            case 3: hairLength = HairLength.LONG; break;
-            case 4: hairLength = HairLength.BALD; break;
+            case 1:
+                hairLength = HairLength.SHORT;
+                break;
+            case 2:
+                hairLength = HairLength.MEDIUM;
+                break;
+            case 3:
+                hairLength = HairLength.LONG;
+                break;
+            case 4:
+                hairLength = HairLength.BALD;
+                break;
         }
         return hairLength;
     }
@@ -186,14 +222,14 @@ class GameHelper {
             this.prompts = Files.lines(promptFilePath).collect(Collectors.toList());
             banner = messages.get(0).split("/n");
             rules = messages.get(1).split("/n");
-            win =  messages.get(2);
-            correct =  messages.get(3);
-            incorrect =  messages.get(4);
-            invalid =  prompts.get(0);
-            start = "\n"+prompts.get(2)+"\n";
-            chooseName = "\n"+prompts.get(3)+"\n";
-            chooseFeature = prompts.get(4)+"\n"+prompts.get(5)+"\n";
-            chooseHairLength = prompts.get(8)+"\n"+ prompts.get(9) +"\n";
+            win = messages.get(2);
+            correct = messages.get(3);
+            incorrect = messages.get(4);
+            invalid = prompts.get(0);
+            start = "\n" + prompts.get(2) + "\n";
+            chooseName = "\n" + prompts.get(3) + "\n";
+            chooseFeature = prompts.get(4) + "\n" + prompts.get(5) + "\n";
+            chooseHairLength = prompts.get(8) + "\n" + prompts.get(9) + "\n";
         }
 
         void welcome() {
@@ -206,7 +242,6 @@ class GameHelper {
         }
 
         private void incorrect() {
-            losses++;
             System.out.println(printer.incorrect);
         }
 
@@ -219,10 +254,11 @@ class GameHelper {
         }
 
         String chooseBoolean(String selected) {
-            return prompts.get(6)+selected+prompts.get(7)+"\n";
+            return prompts.get(6) + selected + prompts.get(7) + "\n";
         }
+
         private void suspects() {
-            System.out.println("Current Suspects:");
+            System.out.println("Current Suspects: ");
             printer.printList(getCollect());
         }
     }

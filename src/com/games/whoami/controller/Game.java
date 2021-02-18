@@ -26,5 +26,4 @@ public class Game {
         gameHelper.gameLogic(mysteryPerson, prompter);
         gameHelper.win(mysteryPerson.getName());
     }
-
 }
