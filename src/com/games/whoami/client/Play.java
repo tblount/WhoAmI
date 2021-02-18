@@ -24,7 +24,7 @@ public class Play implements SplashApp {
     }
     public static void main(String[] args) throws IOException {
         Play app = new Play();
-        app.welcome("images/java.png" ,"images/credits.jpg");
+        app.welcome("images/team.png","images/whoami.png" ,"images/credits.png");
         app.start();
     }
 }
