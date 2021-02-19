@@ -21,11 +21,11 @@ import java.util.stream.Collectors;
 
 class GameHelper {
     Printer printer;
-    Character character;
-    Collection<Person> currentList = new ArrayList<>();
-    Instant startTime;
-    int steps = 0;
-    int losses = 0;
+    private Character character;
+    private Collection<Person> currentList = new ArrayList<>();
+    private Instant startTime;
+    private int steps = 0;
+    private int losses = 0;
 
     GameHelper() throws IOException {
         printer = new Printer();
@@ -128,7 +128,7 @@ class GameHelper {
         return character.size() != 1;
     }
 
-    void win(String mysteryPerson) {
+    void winOrLose(String mysteryPerson) {
         long gameTime = Duration.between(startTime, Instant.now()).toSeconds();
         System.out.println(printer.win + " " + mysteryPerson);
         System.out.println("Steps Taken: " + steps);
