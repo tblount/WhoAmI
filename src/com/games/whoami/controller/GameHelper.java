@@ -24,6 +24,7 @@ class GameHelper {
     Character character;
     Collection<Person> currentList = new ArrayList<>();
     Instant startTime;
+    int steps = 0;
     int losses = 0;
 
     GameHelper() throws IOException {
@@ -37,11 +38,11 @@ class GameHelper {
         while (stillPlaying()) {
             // make prompt calls
             String nameOrFeatureSelection = prompter.prompt(printer.start, "[1-3]", printer.invalid);
-
+            steps++;
             if (nameOrFeature(nameOrFeatureSelection, "1")) {
                 printer.printList(getCollect());
                 String name = prompter.prompt(printer.chooseName);
-
+                steps++;
                 if (pickedRightPerson(mysteryPerson, name)) {
                     break;
                 } else {
@@ -62,6 +63,7 @@ class GameHelper {
 
         printer.choice(playerSelection(featureSelection));
 
+        steps++;
         if (featureSelection != 2) {
             checkByFeaturesNotHairLength(prompter, featureSelection, mysteryPerson);
         } else {
@@ -74,6 +76,7 @@ class GameHelper {
         boolean playerInput = Boolean.parseBoolean(playerChoice);
 
         String guess;
+        steps++;
         if (mysteryPropertyCorrect(mysteryPerson, featureSelection, playerInput)) {
             currentList = playerOptionNames(character, featureSelection, playerInput);
             guess = printer.correct;
@@ -89,6 +92,7 @@ class GameHelper {
         String playerChoice = prompter.prompt(printer.chooseHairLength, "[1-4]", printer.invalid);
         int playerInput = Integer.parseInt(playerChoice);
 
+        steps++;
         if (hairLengthEqual(mysteryPerson, playerInput)) {
             currentList = character.filterByHairLength(hairSelection(playerInput));
             printer.correct();
@@ -127,6 +131,7 @@ class GameHelper {
     void win(String mysteryPerson) {
         long gameTime = Duration.between(startTime, Instant.now()).toSeconds();
         System.out.println(printer.win + " " + mysteryPerson);
+        System.out.println("Steps Taken: " + steps);
         System.out.println("Wrong Guesses: " + losses);
         System.out.println("Time: " + (int) Math.floor(gameTime / 60) + " minutes " + (gameTime % 60) + " seconds.");
     }
