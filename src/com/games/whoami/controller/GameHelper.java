@@ -69,7 +69,6 @@ class GameHelper {
         }
     }
 
-
     private void checkByFeaturesNotHairLength(Prompter prompter, int featureSelection, Person mysteryPerson) {
         String playerChoice = prompter.prompt(printer.chooseBoolean(playerSelection(featureSelection)), "true|false|True|False", printer.invalid);
         boolean playerInput = Boolean.parseBoolean(playerChoice);
