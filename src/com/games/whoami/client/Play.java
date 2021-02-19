@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 public class Play implements SplashApp {
     Play() {
-
     }
 
     @Override

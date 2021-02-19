@@ -28,10 +28,9 @@ public class Game {
             gameHelper.printer.welcome();
             gameHelper.gameLogic(mysteryPerson, prompter);
             gameHelper.win(mysteryPerson.getName());
-            Thread.sleep(8000L);
+            Thread.sleep(9000L);
         } catch (IOException | InterruptedException e) {
             System.out.println(e.getMessage());
         }
-
     }
 }

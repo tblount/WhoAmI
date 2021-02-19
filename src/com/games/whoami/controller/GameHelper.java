@@ -257,7 +257,7 @@ class GameHelper {
         }
 
         private void correct() {
-            System.out.println(printer.correct);
+            System.out.println(" " + printer.correct);
         }
 
         private void incorrect() {
