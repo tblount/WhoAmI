@@ -1,3 +1,6 @@
+/*
+  View main client class to start the Who Am I game.
+ */
 package com.games.whoami.client;
 
 import com.apps.util.Prompter;
@@ -25,7 +28,7 @@ public class Play implements SplashApp {
 
     public static void main(String[] args) {
         Play app = new Play();
-        app.welcome("images/team.png", "images/whoami.png", "images/credits.png");
+        //app.welcome("images/team.png", "images/whoami.png", "images/credits.png");
         app.start();
     }
 }

@@ -74,5 +74,4 @@ public class CharacterDatabaseTest {
     public void getAll_shouldThrowException_whenModified() throws UnsupportedOperationException {
         characterDB.getAll().clear();
     }
-
 }

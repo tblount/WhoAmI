@@ -1,3 +1,7 @@
+/*
+  Initializes character database, implements random shuffle for Person collection
+  Signs contract with Character class and implements it's methods
+ */
 package com.games.whoami;
 
 import java.io.IOException;

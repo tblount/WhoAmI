@@ -1,3 +1,6 @@
+/*
+  Business class that initializes name and features for Person and it's getter methods
+ */
 package com.games.whoami;
 
 public class Person {

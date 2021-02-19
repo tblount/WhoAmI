@@ -1,3 +1,6 @@
+/*
+  Loads database from character-data.csv file
+ */
 package com.games.whoami;
 
 import java.io.IOException;

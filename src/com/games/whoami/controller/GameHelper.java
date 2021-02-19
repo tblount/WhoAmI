@@ -1,3 +1,7 @@
+/*
+  Helper class to Game class
+  The Game logic, Prompter and Printer classes are implemented
+ */
 package com.games.whoami.controller;
 
 import com.apps.util.Prompter;
@@ -96,7 +100,6 @@ class GameHelper {
                     .collect(Collectors.toList());
         }
     }
-
 
     private boolean mysteryPropertyCorrect(Person mysteryPerson, int featureSelection, boolean playerInput) {
         return Boolean.compare(playerInput, mysterySelection(featureSelection, mysteryPerson)) == 0;

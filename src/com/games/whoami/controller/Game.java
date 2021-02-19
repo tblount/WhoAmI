@@ -1,4 +1,7 @@
-
+/*
+  Controller class that generates random mystery person
+  Initializes game logic and win methods
+ */
 package com.games.whoami.controller;
 
 import com.apps.util.Prompter;
@@ -18,7 +21,6 @@ public class Game {
 
         try {
             Character character = new CharacterDatabase();
-
             // creating random/mystery
             Person mysteryPerson = character.randomPerson();
             // System.out.println("Assigned random person: " + mysteryPerson);

@@ -1,3 +1,6 @@
+/*
+  Interface class with methods for Character Database class
+ */
 package com.games.whoami;
 
 import java.util.Collection;
@@ -20,5 +23,4 @@ public interface Character {
     int size();
 
     Collection<Person> getAll();
-
 }
